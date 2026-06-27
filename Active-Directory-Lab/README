@@ -1,0 +1,19 @@
+# Active Directory Enterprise Lab
+
+## Overview
+
+This project documents the deployment of a Windows Server 2022 Active Directory environment used to simulate an enterprise Windows domain.
+
+## Technologies
+
+- Windows Server 2022
+- Windows 11
+- Active Directory Domain Services
+- DNS
+- Group Policy
+- PowerShell
+- Oracle VirtualBox
+
+## Current Status
+
+🚧 Documentation in progress.
