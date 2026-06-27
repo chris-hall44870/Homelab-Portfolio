@@ -1,0 +1,91 @@
+# Active Directory Enterprise Lab
+
+## Objective
+
+Build a Windows Server 2022 Active Directory environment to simulate an enterprise network and develop hands-on experience with Windows infrastructure, authentication, DNS, DHCP, and Group Policy.
+
+---
+
+## Technologies
+
+- Windows Server 2022
+- Windows 11
+- Active Directory Domain Services
+- DNS
+- DHCP
+- Group Policy
+- PowerShell
+- Oracle VM VirtualBox
+
+---
+
+## Lab Environment
+
+- Domain Controller: DC01
+- Client: Windows 11
+- Domain: corp.local
+- Static IP addressing
+- Internal virtual network
+
+---
+
+## Skills Demonstrated
+
+- Installed Active Directory Domain Services
+- Promoted a Windows Server to a Domain Controller
+- Configured DNS
+- Configured DHCP
+- Joined Windows 11 client to the domain
+- Created users and Organizational Units (OUs)
+- Applied Group Policy Objects (GPOs)
+- Used PowerShell for administration and troubleshooting
+- Validated network connectivity
+
+---
+
+## Challenges
+
+Describe problems you encountered during the build.
+
+Examples:
+
+- DNS configuration
+- Domain join failures
+- VirtualBox networking
+- Authentication issues
+
+---
+
+## Troubleshooting
+
+Document how you solved each issue.
+
+Example:
+
+Issue:
+Client could not join the domain.
+
+Cause:
+Incorrect DNS configuration.
+
+Resolution:
+Configured the client to use the Domain Controller as its primary DNS server and verified name resolution using nslookup.
+
+---
+
+## Lessons Learned
+
+- Importance of DNS in Active Directory
+- Enterprise authentication workflow
+- Windows Server administration
+- Network troubleshooting methodology
+
+---
+
+## Future Improvements
+
+- Add a second Domain Controller
+- Implement roaming profiles
+- Deploy file server
+- Configure certificate services
+- Integrate pfSense firewall
