@@ -16,4 +16,196 @@ This project documents the deployment of a Windows Server 2022 Active Directory 
 
 ## Current Status
 
-🚧 Documentation in progress.
+# Active Directory Enterprise Lab
+
+## Project Overview
+
+This project demonstrates the deployment and administration of a Windows Server 2022 Active Directory environment designed to simulate an enterprise Windows domain. The lab focuses on identity management, Group Policy, Windows authentication, security auditing, and basic enterprise networking.
+
+---
+
+## Technologies Used
+
+- Windows Server 2022
+- Windows 11
+- Active Directory Domain Services
+- DNS
+- Group Policy
+- PowerShell
+- Oracle VirtualBox
+- Sysmon
+- Windows Event Viewer
+
+---
+
+# Lab Walkthrough
+
+## 1. Domain Join
+
+Successfully joined a Windows 11 workstation (CLIENT0011) to the **corp.local** Active Directory domain.
+
+![Domain Join](Images/CLIENT0011 successfully joined corp.local domain.png)
+
+---
+
+## 2. Computer Account Created in Active Directory
+
+After joining the domain, the workstation was automatically added to Active Directory Users and Computers.
+
+This demonstrates successful communication between the client and the domain controller.
+
+![Computer Account](Images/Client0011 under workstations in corp.local.png)
+
+---
+
+## 3. Organizational Unit Management
+
+Created a dedicated **Workstations** Organizational Unit and moved CLIENT0011 into it to better organize domain computers and prepare for Group Policy deployment.
+
+![Workstations OU](Images/CLIENT0011 moved to workstations.png)
+
+---
+
+## 4. Group Policy Deployment
+
+Created and linked a workstation security Group Policy Object (GPO).
+
+This policy was applied to computers inside the Workstations Organizational Unit.
+
+![GPO Linked](Images/DC01 workstation security policy 03-10-26.png)
+
+---
+
+## 5. Account Lockout Policy
+
+Configured account lockout settings including:
+
+- Lockout Threshold
+- Lockout Duration
+- Reset Counter After
+
+These policies simulate enterprise account security practices.
+
+![Account Lockout Policy](Images/account group policy settings 03-10.png)
+
+---
+
+## 6. Advanced Audit Policy
+
+Configured Windows Advanced Audit Policies to record successful and failed credential validation events.
+
+This provides visibility into authentication activity.
+
+![Audit Policy](Images/audit credential validation for DC01.png)
+
+---
+
+## 7. Failed Authentication (Event ID 4625)
+
+Generated failed login attempts to create Windows Security Event ID **4625**.
+
+This event can be used by administrators and security analysts to investigate failed authentication attempts.
+
+![4625 Event](Images/event 4625 client0011.png)
+
+---
+
+## 8. Authentication Details
+
+Reviewed Event Viewer logs to identify:
+
+- Source Workstation
+- Source IP Address
+- Logon Type
+- Failure Status Codes
+
+This information is commonly used during security investigations.
+
+![Authentication Details](Images/CLIENT0011 log 4625 evidence of login failure 03-16-26.png)
+
+---
+
+## 9. Account Lockout Event (4740)
+
+Triggered an account lockout after repeated failed logon attempts.
+
+Verified Event ID **4740** was successfully logged.
+
+![4740 Event](Images/event 4740, logout notification successful 03-10-26.png)
+
+---
+
+## 10. Domain Authentication Verification
+
+Verified successful authentication by logging into the domain and confirming the logged-on user with PowerShell.
+
+```
+whoami
+```
+
+Output:
+
+```
+corp\labuser
+```
+
+![Whoami](Images/corp-labuser verified.png)
+
+---
+
+## 11. Network Connectivity Testing
+
+Validated communication between the Windows client and Domain Controller using ICMP.
+
+```
+ping 192.168.56.10
+```
+
+Successful responses confirmed proper network connectivity.
+
+![Ping Test](Images/successful ping to domain controller.png)
+
+---
+
+## 12. Sysmon Deployment
+
+Installed Microsoft Sysmon to enhance endpoint logging for future security monitoring and SIEM integration.
+
+Verified the Sysmon service was successfully installed and running.
+
+![Sysmon](Images/Sysmon installed on Client01 successfully 04-27-26.png)
+
+---
+
+# Skills Demonstrated
+
+- Active Directory Administration
+- Windows Server 2022
+- Windows Authentication
+- Domain Joining
+- Organizational Unit Management
+- Group Policy
+- Account Lockout Policies
+- Windows Security Auditing
+- Event Viewer
+- Event IDs 4625 & 4740
+- DNS
+- Enterprise Windows Networking
+- PowerShell
+- Sysmon Deployment
+- Enterprise Troubleshooting
+
+---
+
+# Future Improvements
+
+- DHCP Deployment
+- DNS Forwarders
+- Additional Organizational Units
+- User and Group Management
+- File Server
+- Shared Folder Permissions
+- Roaming Profiles
+- Splunk SIEM Integration
+- PowerShell Automation
+- Additional Security Monitoring
